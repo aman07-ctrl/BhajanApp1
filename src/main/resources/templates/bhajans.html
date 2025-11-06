@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="'Bhajans for ' + ${god}">Bhajans</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom right, #f9f5ec, #e7dacb);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #ba8b3f;
+            color: white;
+            padding: 1rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 1rem;
+            width: 320px;
+        }
+
+        iframe {
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .fav-btn {
+            border: none;
+            background-color: #e2e0dc;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            color: #444;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .fav-btn:hover {
+            background-color: #d4af37;
+            color: white;
+        }
+
+        .back {
+            margin-top: 2rem;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .back a:hover {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <header th:text="'🎵 Bhajans for ' + ${god}">Bhajans</header>
+
+    <div class="container">
+        <div class="card" th:each="bhajan : ${bhajans}">
+            <div class="title" th:text="${bhajan.title}">Bhajan Title</div>
+            <iframe th:src="${bhajan.youtubeUrl}" width="300" height="200" frameborder="0" allowfullscreen></iframe>
+            <button class="fav-btn">❤️ Mark Favourite</button>
+        </div>
+    </div>
+
+    <div class="back">
+        <a href="/">⏮ Back to Home</a>
+    </div>
+
+</body>
+</html>
